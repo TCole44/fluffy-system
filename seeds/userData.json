@@ -1,8 +1,8 @@
 [
     {
-      "Artist": "Bad Bunny",
-      "Song": "Un Verano Sin Ti",
-      "Album": "Un Verano Sin Ti",
-      "Genre": "Pop"
+      "artist": "Bad Bunny",
+      "song": "Un Verano Sin Ti",
+      "album": "Un Verano Sin Ti",
+      "genre": "Pop"
     }
 ]
