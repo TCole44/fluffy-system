@@ -18,25 +18,31 @@ const songData = [
           "song": "Me Porto Bonito",
           "album": "Un Verano Sin Ti",
           "genre": "Pop"
-        }
+        },
         {
           "artist": "Outkast",
           "song": "Flip Flop Rock (Feat. Killer Mike & JAY Z)",
           "album": "As Above, So Below",
           "genre": "Hiphop/Rap"
-        }
+        },
         {
           "artist": "Mac Miller",
           "song": "2009 ",
           "album": "Swimming",
           "genre": "Hiphop/Rap"
-        }
+        },
         {
           "artist": "Jorja Smith",
           "song": "Let Me Down(Feat. Stormzy)",
           "album": "Let Me Down - Single",
           "genre": "Pop"
-        }
+        },
+        {
+            "artist": "Baby Keem",
+            "song": "family ties(with Kendrick Lamar",
+            "album": "The Melodic Blue",
+            "genre": "Hiphop/Rap"
+        },
 ]
 
 module.exports = seedSongs;
