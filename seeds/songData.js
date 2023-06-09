@@ -22,7 +22,7 @@ const songData = [
         {
           "artist": "Outkast",
           "song": "Flip Flop Rock (Feat. Killer Mike & JAY Z)",
-          "album": "As Above, So Below",
+          "album": "Speakerboxxx/ The Love Below",
           "genre": "Hiphop/Rap"
         }
         {
@@ -36,6 +36,12 @@ const songData = [
           "song": "Let Me Down(Feat. Stormzy)",
           "album": "Let Me Down - Single",
           "genre": "Pop"
+        }
+        {
+          "artist": "21 Savage",
+          "song": "Glock in My Lap",
+          "album": "Savage Mode 2",
+          "genre": "Hiphop/Rap"
         }
 ]
 
