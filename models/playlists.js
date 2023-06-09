@@ -24,6 +24,14 @@ Playlists.init(
             allowNull: false,
         },
     },
+    {
+        sequelize,
+        modelName: 'Playlists'
+    }
 )
+
+
+
+
 
 module.exports = Playlists;

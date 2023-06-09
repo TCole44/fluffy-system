@@ -28,7 +28,10 @@ Songs.init(
             allowNull: false,
         },
     },
+    {
     sequelize,
+    modelName: 'Songs',
+    }
 );
 
 module.exports = Songs;
