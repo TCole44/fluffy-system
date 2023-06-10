@@ -31,6 +31,7 @@ Songs.init(
     {
     sequelize,
     modelName: 'Songs',
+    tableName: 'Songs'
     }
 );
 
