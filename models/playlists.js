@@ -13,15 +13,15 @@ Playlists.init(
         },
         PlaylistName: {
             type: DataTypes.STRING,
-            allowNull: false,
+            allowNull: true,
         },
         User: {
             type: DataTypes.STRING,
-            allowNull: false,
+            allowNull: true,
         },
         Songs: {
             type: DataTypes.STRING,
-            allowNull: false,
+            allowNull: true,
         },
     },
     {
