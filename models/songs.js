@@ -28,7 +28,11 @@ Songs.init(
             allowNull: false,
         },
     },
+    {
     sequelize,
+    modelName: 'Songs',
+    tableName: 'Songs'
+    }
 );
 
 module.exports = Songs;

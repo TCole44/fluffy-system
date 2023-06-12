@@ -1,4 +1,4 @@
-const { Songs } = require('../models/songs')
+const { Songs } = require('../models')
 
 const songData = [
         {
@@ -43,12 +43,8 @@ const songData = [
           "album": "Savage Mode 2",
           "genre": "Hiphop/Rap"
         }
-        {
-          "artist": "Lil Wayne",
-          "song": "Receipt",
-          "album": "Carter II",
-          "genre": "Hiphop/Rap"
-        },
 ]
+
+const seedSongs = () => Songs.bulkCreate(songData);
 
 module.exports = seedSongs;
