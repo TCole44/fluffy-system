@@ -42,7 +42,19 @@ const songData = [
           "song": "Glock in My Lap",
           "album": "Savage Mode 2",
           "genre": "Hiphop/Rap"
+        },
+        {
+          "artist": "Baby Keem",
+          "song": "family ties(with Kendrick Lamar",
+          "album": "The Melodic Blue",
+          "genre": "Hiphop/Rap"
         }
+        {
+          "artist": "Lil Wayne",
+          "song": "Receipt",
+          "album": "Carter II",
+          "genre": "Hiphop/Rap"
+        },
 ]
 
 const seedSongs = () => Songs.bulkCreate(songData);
