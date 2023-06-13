@@ -48,7 +48,7 @@ const songData = [
           "song": "family ties(with Kendrick Lamar",
           "album": "The Melodic Blue",
           "genre": "Hiphop/Rap"
-        }
+        },
         {
           "artist": "Lil Wayne",
           "song": "Receipt",
