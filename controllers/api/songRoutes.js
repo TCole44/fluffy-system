@@ -1,4 +1,5 @@
 const router = require('express').Router();
+const { start } = require('repl');
 const { Songs } = require('../../models');
 
 router.get('/', async (req,res) => {
@@ -14,16 +15,16 @@ router.get('/', async (req,res) => {
 
 })
 
-app.get("/songs/:model", function (req, res) {
-  console.log(req.params.model);
-  for (let i = 0; i < songs.length; i++) {
-    if (songs[i].model.toLowerCase() === req.params.model.toLowerCase()) {
+router.get("/songs/", function (req, res) {
+  console.log(req.params.id);
+  for (let i = 0; i < Songs.length; i++) {
+    if (songs[i].model.toLowerCase() === req.params.id.toLowerCase()) {
       req.session.save(() => {
-        req.session.lastSong = req.params.model;
+        req.session.lastSong = req.params.id;
         req.session.count = req.session.count + 1;
       });
 
-      return res.render("song", songs[i]);
+      return res.render("song", Songs[i]);
     }
   }
 });
