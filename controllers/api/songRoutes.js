@@ -14,4 +14,17 @@ router.get('/', async (req,res) => {
 
 })
 
+app.get("/songs/:model", function (req, res) {
+  console.log(req.params.model);
+  for (let i = 0; i < songs.length; i++) {
+    if (songs[i].model.toLowerCase() === req.params.model.toLowerCase()) {
+      req.session.save(() => {
+        req.session.lastSong = req.params.model;
+        req.session.count = req.session.count + 1;
+      });
+
+      return res.render("song", songs[i]);
+    }
+  }
+});
 module.exports = router;
