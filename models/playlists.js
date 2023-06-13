@@ -1,5 +1,6 @@
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
+const { timeStamp } = require('console');
 
 class Playlists extends Model{}
 
@@ -11,23 +12,37 @@ Playlists.init(
             primaryKey: true,
             autoIncrement: true,
         },
-        PlaylistName: {
+        playlistName: {
             type: DataTypes.STRING,
             allowNull: true,
         },
-        User: {
+        user_id: {
             type: DataTypes.STRING,
             allowNull: true,
+            references:{
+                model: 'user',
+                key: 'id',
+            }
+
         },
-        Songs: {
+        songs: {
             type: DataTypes.STRING,
             allowNull: true,
+            references: {
+                model: 'songs',
+                key: 'id',
+            }
         },
+
     },
     {
         sequelize,
-        modelName: 'Playlists'
-    }
+        timestamps: { 
+          createdAt: false,
+          updatedAt: false
+        },
+        modelName: 'Playlist'
+      }
 )
 
 

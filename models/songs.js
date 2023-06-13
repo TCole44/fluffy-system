@@ -30,8 +30,12 @@ Songs.init(
     },
     {
     sequelize,
-    modelName: 'Songs',
-    tableName: 'Songs'
+    timestamps: { 
+        createdAt: false,
+        updatedAt: false
+      },
+    modelName: 'songs',
+    tableName: 'songs'
     }
 );
 
