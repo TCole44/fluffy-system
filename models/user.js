@@ -44,10 +44,6 @@ User.init(
       },
     },
     sequelize,
-    timestamps: { 
-      createdAt: false,
-      updatedAt: false
-    },
     timestamps: false,
     freezeTableName: true,
     underscored: true,

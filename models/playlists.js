@@ -17,7 +17,7 @@ Playlists.init(
             allowNull: true,
         },
         user_id: {
-            type: DataTypes.STRING,
+            type: DataTypes.INTEGER,
             allowNull: true,
             references:{
                 model: 'user',
@@ -26,7 +26,7 @@ Playlists.init(
 
         },
         songs: {
-            type: DataTypes.STRING,
+            type: DataTypes.INTEGER,
             allowNull: true,
             references: {
                 model: 'songs',
@@ -37,10 +37,7 @@ Playlists.init(
     },
     {
         sequelize,
-        timestamps: { 
-          createdAt: false,
-          updatedAt: false
-        },
+        timestamps: false,
         modelName: 'Playlist'
       }
 )

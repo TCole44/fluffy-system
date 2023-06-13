@@ -30,10 +30,7 @@ Songs.init(
     },
     {
     sequelize,
-    timestamps: { 
-        createdAt: false,
-        updatedAt: false
-      },
+    timestamps: false,
     modelName: 'songs',
     tableName: 'songs'
     }
