@@ -48,6 +48,16 @@ nav li a:hover {
   background-color: #111;
 }
 
+nav li.loginButton button {
+    background-color: transparent;
+    color: white;
+    border: none;
+    cursor: pointer;
+    padding: 14px 16px;
+    font-size: inherit;
+    float: right;
+  }
+
 section {
   padding: 20px;
 }
