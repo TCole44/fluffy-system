@@ -15,17 +15,21 @@ router.get('/', async (req,res) => {
 
 })
 
-router.get("/songs/", function (req, res) {
-  console.log(req.params.id);
-  for (let i = 0; i < Songs.length; i++) {
-    if (songs[i].model.toLowerCase() === req.params.id.toLowerCase()) {
-      req.session.save(() => {
-        req.session.lastSong = req.params.id;
-        req.session.count = req.session.count + 1;
-      });
-
-      return res.render("song", Songs[i]);
+router.get('/:id', async (req, res) => {
+  try {
+    const song = await Songs.findByPk(req.params.id);
+    if (!song) {
+      return res.status(404).json({ error: 'Song not found' });
     }
+
+    req.session.lastSong = req.params.id;
+    req.session.count = (req.session.count || 0) + 1;
+    
+    res.json({ song });
+  } catch (err) {
+    console.error(err);
+    res.status(500).json(err);
   }
-});
+})
+
 module.exports = router;
