@@ -34,27 +34,25 @@ app.use(routes);
 app.get("/songs/:song", function (req, res) {
   console.log(req.params.model);
   for (let i = 0; i < allSongs.length; i++) {
-    if (allSongs[i].song.toLowerCase() === req.params.model.toLowerCase()) {
+    if (Songs[i].song.toLowerCase() === req.params.song.toLowerCase()) {
       req.session.save(() => {
-        req.session.lastModel = req.params.model;
         req.session.count = req.session.count + 1;
       });
 
-      return res.render("song", allSongs[i]);
+      return res.render("song", Songs[i]);
     }
   }
 });
 
 app.get("/songsbyid/:id", function (req, res) {
-  return res.render("song", allSongs[req.params.id - 1]);
+  return res.render("song", Songs[req.params.id - 1]);
 });
 
-app.get(["/", "/allSongs"], function (req, res) {
+app.get(["/", "/Songs"], function (req, res) {
   res.render("allsongs", {
     songArray: allSongs,
     song: "",
-    artist: "",
-    lastModel: req.session.lastModel,
+    artist: ""
   });
 });
 
