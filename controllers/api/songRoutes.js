@@ -4,7 +4,7 @@ const { Songs } = require('../../models');
 
 router.get('/', async (req,res) => {
     try{const songs = await Songs.findAll();
-    res.json(songs);
+    res.render('allsongs', songs);
     }  
     
     catch (err) {
