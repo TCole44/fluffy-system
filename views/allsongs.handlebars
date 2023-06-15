@@ -3,7 +3,7 @@
 <div>
   {{#each songs}}
     <div class="song">
-      <h3>{{this.dataValues.song}}</h3>
+      <h3><a href="/songs/{{this.dataValues.id}}">{{this.dataValues.song}}</a></h3>
       <p>Artist: {{this.dataValues.artist}}</p>
     </div>
   {{/each}}
