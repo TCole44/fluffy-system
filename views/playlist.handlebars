@@ -1,0 +1,15 @@
+<a href="/songs.js/{{songs}}">
+</a>
+{{#if song}}
+    <div style="font-size:16px; color:#ffffff">
+<br>
+<b>Song:{{song}}</b><br>
+<b>Artist:{{artist}}</b><br> 
+<b>Album: {{album}}</b><br>
+<b>Genre: {{genre}}</b><br>
+<br>
+    </div>
+{{/if}}
+{{#if !song}}
+    <div style="font-size:16px; color:red">Playlist Empty:(</div>
+{{/if}}

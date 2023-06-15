@@ -3,6 +3,12 @@
 Last Song Viewed: {{lastSong}}
 <br><br>
 
+<div style="background-color:#734258">
+    {{#each carsArray}}
+        {{> carlisting  buyerName=../buyer sellerName=../seller}}
+    {{/each}}
+</div>
+
 <footer>
     {{> copywriteinfo}}
 </footer>
