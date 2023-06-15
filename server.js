@@ -48,14 +48,6 @@ app.get("/songsbyid/:id", function (req, res) {
   return res.render("song", Songs[req.params.id - 1]);
 });
 
-app.get(["/", "/Songs"], function (req, res) {
-  res.render("allsongs", {
-    songArray: allSongs,
-    song: "",
-    artist: ""
-  });
-});
-
 sequelize.sync({ force: false }).then(() => {
   app.listen(PORT, () => console.log('Now listening'));
 });
