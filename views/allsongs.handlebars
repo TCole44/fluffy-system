@@ -1,9 +1,14 @@
 <h2>ALL SONGS!</h2>
 
 <div style="background-color:#734258">
-    {{#each songsArray}}
-        {{> songs songName=../song artistName=../artist}}
-    {{/each}}
+  {{#each songs}}
+    <div class="song">
+      <h3>{{this.dataValues.song}}</h3>
+      <p>Artist: {{this.dataValues.artist}}</p>
+      <p>Album: {{this.dataValues.album}}</p>
+      <p>Genre: {{this.dataValues.genre}}</p>
+    </div>
+  {{/each}}
 </div>
 
 <footer>
