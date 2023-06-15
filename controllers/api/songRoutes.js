@@ -4,7 +4,6 @@ const { Songs } = require('../../models');
 
 router.get('/', async (req,res) => {
     try{const songs = await Songs.findAll();
-      console.log(songs)
     res.render('allsongs', {songs: songs});
     }  
     
@@ -26,7 +25,8 @@ router.get('/:id', async (req, res) => {
     req.session.lastSong = req.params.id;
     req.session.count = (req.session.count || 0) + 1;
     
-    res.json({ song });
+    console.log(song)
+    res.render('songs',{ song:song });
   } catch (err) {
     console.error(err);
     res.status(500).json(err);
