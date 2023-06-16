@@ -31,6 +31,25 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(routes);
 
+app.get('/', async (req, res) => {
+  try {
+    const userData = await User.findAll({
+      attributes: { exclude: ['password'] },
+      order: [['name', 'ASC']],
+    });
+
+    const users = userData.map((project) => project.get({ plain: true }));
+
+    res.render('homepage', {
+      users,
+      logged_in: req.session.logged_in || false,
+    });
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
+
 app.get("/songs/:song", function (req, res) {
   console.log(req.params.model);
   for (let i = 0; i < allSongs.length; i++) {
