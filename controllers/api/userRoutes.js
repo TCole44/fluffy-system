@@ -3,7 +3,7 @@ const { User } = require('../../models');
 
 router.get('/', async (req, res) => {
     if (req.session.logged_in) {
-      res.redirect('/'); // Redirect to homepage if already logged in
+      res.redirect(''); // Redirect to homepage if already logged in
       return;
     }
   
