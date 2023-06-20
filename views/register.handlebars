@@ -1,22 +1,15 @@
-<h2>Register</h2>
-
-
-<form class="form register-form">
+<form class="form register-form" action="/register" method="POST">
   <div class="form-group">
-    <label for="username-register">username:</label>
-    <input class="form-input" type="text" id="email-register" />
-  </div>
-<form class="form register-form">
-  <div class="form-group">
-    <label for="email-register">email:</label>
-    <input class="form-input" type="text" id="email-register" />
+    <label for="name-register">Name:</label>
+    <input class="form-input" type="text" id="name-register" name="name" />
   </div>
   <div class="form-group">
-    <label for="password-register">password:</label>
-    <input class="form-input" type="password" id="password-register" />
+    <label for="email-register">Email:</label>
+    <input class="form-input" type="text" id="email-register" name="email" />
   </div>
   <div class="form-group">
-    <button class="btn btn-primary" type="submit">register</button>
+    <label for="password-register">Password:</label>
+    <input class="form-input" type="password" id="password-register" name="password" />
+  </div>
+  <button class="btn btn-primary" type="submit">Register</button>
 </form>
-
-<script src="/js/register.js"></script>

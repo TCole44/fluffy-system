@@ -6,7 +6,7 @@ router.get('/', (req, res) => {
   res.render('register');
 });
 
-router.post('/register', async (req, res) => {
+router.post('/', async (req, res) => {
   try {
     const { name, email, password } = req.body;
 
@@ -17,7 +17,10 @@ router.post('/register', async (req, res) => {
 
     const hashedPassword = await bcrypt.hash(password, 10);
 
+    console.log(req.body);
+
     await User.create({ name, email, password: hashedPassword });
+
 
     res.redirect('/login');
   } catch (err) {
