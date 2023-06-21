@@ -13,7 +13,7 @@ router.get('/', async (req, res) => {
   });
 
 
-  router.post('/login', async (req, res) => {
+  router.post('/', async (req, res) => {
     try {
       console.log('Login POST request received');
       const userData = await User.findOne({ where: { email: req.body.email } });

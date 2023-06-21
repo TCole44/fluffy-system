@@ -28,8 +28,6 @@ const sess = {
 
 // Add express-session and store as Express.js middleware
 app.use(session(sess));
-const loginRoutes = require('./controllers/api/userRoutes')
-app.use('/login', loginRoutes)
 
 app.engine('handlebars', hbs.engine);
 app.set('view engine', 'handlebars');
