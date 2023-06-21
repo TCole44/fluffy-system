@@ -1,26 +1,35 @@
 const path = require('path');
 const express = require('express');
-// Import express-session
 const session = require('express-session');
 const exphbs = require('express-handlebars');
-
 const routes = require('./controllers');
-const sequelize = require('./config/connection');
 const helpers = require('./utils/helper');
+
+const sequelize = require('./config/connection');
+
+// Create a new sequelize store using the express-session package
+const SequelizeStore = require('connect-session-sequelize')(session.Store);
 
 const app = express();
 const PORT = process.env.PORT || 3001;
 
-// Set up sessions
+const hbs = exphbs.create({ helpers });
+
+// Configure and link a session object with the sequelize store
 const sess = {
   secret: 'Super secret secret',
+  cookie: {},
   resave: false,
   saveUninitialized: true,
+  store: new SequelizeStore({
+    db: sequelize
+  })
 };
 
+// Add express-session and store as Express.js middleware
 app.use(session(sess));
-
-const hbs = exphbs.create({ helpers });
+const loginRoutes = require('./controllers/api/userRoutes')
+app.use('/login', loginRoutes)
 
 app.engine('handlebars', hbs.engine);
 app.set('view engine', 'handlebars');
@@ -30,42 +39,6 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(routes);
-
-app.get('/', async (req, res) => {
-  try {
-    const userData = await User.findAll({
-      attributes: { exclude: ['password'] },
-      order: [['name', 'ASC']],
-    });
-
-    const users = userData.map((project) => project.get({ plain: true }));
-
-    res.render('homepage', {
-      users,
-      logged_in: req.session.logged_in || false,
-    });
-  } catch (err) {
-    res.status(500).json(err);
-  }
-});
-
-
-app.get("/songs/:song", function (req, res) {
-  console.log(req.params.model);
-  for (let i = 0; i < allSongs.length; i++) {
-    if (Songs[i].song.toLowerCase() === req.params.song.toLowerCase()) {
-      req.session.save(() => {
-        req.session.count = req.session.count + 1;
-      });
-
-      return res.render("song", Songs[i]);
-    }
-  }
-});
-
-app.get("/songsbyid/:id", function (req, res) {
-  return res.render("song", Songs[req.params.id - 1]);
-});
 
 sequelize.sync({ force: false }).then(() => {
   app.listen(PORT, () => console.log('Now listening'));

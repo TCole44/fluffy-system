@@ -3,6 +3,7 @@ const { User } = require('../../models');
 const bcrypt = require('bcrypt');
 
 router.get('/', async (req, res) => {
+  console.log("hi")
     if (req.session.logged_in) {
       res.redirect('');
       return;
@@ -13,30 +14,31 @@ router.get('/', async (req, res) => {
 
 
   router.post('/login', async (req, res) => {
-    const { email, password } = req.body;
-  
     try {
-      const user = await User.findOne({ where: { email } });
+      console.log('Login POST request received');
+      const userData = await User.findOne({ where: { email: req.body.email } });
   
-      if (!user) {
-        return res.status(404).json({ message: 'User not found' });
+      if (!userData) {
+        console.log('User not found');
+        res.status(400).json({ message: 'Incorrect email or password, please try again' });
+        return;
       }
-
-      const passwordMatch = await bcrypt.compare(password, user.password);
   
-      if (passwordMatch) {
-        req.session.logged_in = true;
-        req.session.user_id = user.id;
-        
-        return res.redirect('');
-      } else {
-        return res.status(401).json({ message: 'Incorrect password' });
+      console.log('User found:', userData);
+      const validPassword = await bcrypt.compare(req.body.password, userData.password);
+  
+      if (!validPassword) {
+        console.log('Invalid password');
+        res.status(400).json({ message: 'Incorrect email or password, please try again' });
+        return;
       }
-    } catch (error) {
-      console.log(error);
-      return res.status(500).json({ message: 'Server error' });
+  
+      console.log('Login successful');
+      res.json({ user: userData, message: 'You are now logged in!' });
+    } catch (err) {
+      console.log('Error:', err);
+      res.status(400).json(err);
     }
   });
-
 
 module.exports = router;
