@@ -15,5 +15,31 @@ router.get('/', async (req,res) => {
 
 })
 
+router.post('/remove', async (req, res) => {
+  try {
+    const { playlistId, songId } = req.body;
+
+    const playlist = await Playlists.findByPk(playlistId);
+
+    if (!playlist) {
+      res.status(404).json({ message: 'Playlist not found' });
+      return;
+    }
+
+    const song = await Songs.findByPk(songId);
+
+    if (!song) {
+      res.status(404).json({ message: 'Song not found' });
+      return;
+    }
+
+    await playlist.removeSong(song);
+
+    res.status(200).json({ message: 'Song removed from playlist' });
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
+  }
+});
 
 module.exports = router;

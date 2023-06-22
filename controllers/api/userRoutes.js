@@ -25,20 +25,24 @@ router.get('/', async (req, res) => {
       }
   
       console.log('User found:', userData);
-      const validPassword = await bcrypt.compare(req.body.password, userData.password);
+      console.log('Provided password:', req.body.password);
+      console.log('Stored hashed password:', userData.password);
   
-      if (!validPassword) {
+      const passwordMatch = await bcrypt.compare(req.body.password, userData.password);
+  
+      if (!passwordMatch) {
         console.log('Invalid password');
         res.status(400).json({ message: 'Incorrect email or password, please try again' });
         return;
       }
   
       console.log('Login successful');
-      res.json({ user: userData, message: 'You are now logged in!' });
+      req.session.logged_in = true;
     } catch (err) {
       console.log('Error:', err);
       res.status(400).json(err);
     }
   });
+  
 
 module.exports = router;
