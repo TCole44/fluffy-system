@@ -38,6 +38,7 @@ router.get('/', async (req, res) => {
   
       console.log('Login successful');
       req.session.logged_in = true;
+      res.json({ok:true})
     } catch (err) {
       console.log('Error:', err);
       res.status(400).json(err);
